@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        int a[n];
+        int cnt_even=0,cnt_odd=0;
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+            if(a[i]%2==0)
+                cnt_even++;
+            else
+                cnt_odd++;
+        }
+        if(cnt_even!=cnt_odd && cnt_even!=cnt_odd+1)
+            cout<<-1<<"\n";
+        else
+        {
+            int cnt=0;
+            for(int i=0;i<n;i++)
+            {
+                if(i%2==0)
+                {
+                    if(a[i]%2!=0)
+                        cnt++;
+                }
+                else
+                {
+                    if(a[i]%2==0)
+                        cnt++;
+                }
+            }
+            cout<<cnt/2<<"\n";
+        }
+    }
+
+    return 0;
+}
