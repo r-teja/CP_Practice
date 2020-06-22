@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        string x;
+        cin>>x;
+        char a[100000];
+        int k=0;
+        a[k]=x[0];
+        k++;
+        int n=x.length();
+        for(int i=1;i<n;)
+        {
+            if(x[i]==x[i+1] && i!=n-1)
+            {
+               a[k]=x[i];
+               i=i+2;
+               k++;
+            }
+            else
+            {
+                a[k]=x[i];
+                k++;
+                i++;
+            }
+        }
+        a[k]='\0';
+        cout<<(string)a<<"\n";
+    }
+
+    return 0;
+}
