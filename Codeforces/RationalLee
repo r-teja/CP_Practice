@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+ 
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,k;
+        cin>>n>>k;
+        int a[n];
+        int get[k];
+        for(int i=0;i<n;i++)
+            cin>>a[i];
+        for(int i=0;i<k;i++)
+            cin>>get[i];
+        sort(a,a+n);
+        vector<int> mini;
+        vector<int> maxi;
+        for(int i=0;i<k;i++)
+        {
+            mini.push_back(a[i]);
+            maxi.push_back(a[n-i-1]);
+        }
+        long long int sum=0;
+        for(int i=0;i<k;i++)
+        {
+            if(get[i]==1)
+            {
+                if(maxi.size()==0)
+                {
+                    int temp=mini.size();
+                    sum=sum+2*mini[temp-1];
+                    mini.erase(mini.end());
+                }
+                else
+                {
+                    sum=sum+2*maxi[0];
+                    maxi.erase(maxi.begin());
+                }
+            }
+            else
+            {
+                sum=sum+maxi[0];
+                sum=sum+mini[0];
+                maxi.erase(maxi.begin());
+                mini.erase(mini.begin());
+            }
+        }
+        cout<<sum<<"\n";
+    }
+    return 0;
+}
